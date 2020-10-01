@@ -1,0 +1,9 @@
+Points to rememer whilem doing the recursive questions including vectors:
+1. in the base case always pass the empty vector ..so that the answer could build ..if you pass vector with size 1 .. it will auto matically include 0 at the end.
+
+Eg:- vector<int> base(0);
+	 return base;
+
+2. In case of string :
+	string base = "";
+	return base;
