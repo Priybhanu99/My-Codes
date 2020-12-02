@@ -15,38 +15,53 @@ int32_t main(){
 	freopen("output.txt","w",stdout);
 	 #endif
 
-	int t;
-	//cin>>t; while(t--){
-
 	int n,d;
 	cin>>n>>d;
+
+	int c[n+1][4];
+	memset(c,sizeof(c),0);
+	for (int i = 0; i <= n; ++i)
+	{
+		for(int j=0;j<=i;j++){
+			if(j==0||j==i){
+				c[i][j] = 1;
+				continue;
+			}
+
+			c[i][j] = c[i-1][j-1]+c[i-1][j];
+		}
+	}
+
 
 	int a[n];
 	for(int i=0;i<n;i++){
 		cin>>a[i];
 	}
-	sort(a,a+n);
 
-	int l =0,hi = n-1;
+	// sort(a,a+n);
 
-	int count = 0;
+	int ans = 0;
 
-	while(l<hi){
 
-		int temp = a[hi]-a[l];
-		if(temp==d){
-			break;
+	int last_index = 0;
+
+	for (int i = 0; i < n-2; ++i)
+	{
+		int temp = a[i]+d;
+		int index = lower_bound(a,a+n,temp)- (a);
+		if(a[min(index,n-1)]!=temp){
+			index--;
 		}
-
-		if(temp>d){
-			hi--;
-		}else{
-			l++;
+		// cout<<temp<<" "<<index;
+		// if(min(index,n)-i+)
+		if(min(index,n-1)-i+1>=3 && min(index,n-1)>last_index){
+			// cout<<"Added "<<c[min(index,n-1)-i+1][3];
+			ans += c[min(index,n-1)-i+1][3];
+			last_index = min(index,n-1);
 		}
-		count++;
+		// cout<<"\n";
 	}
 
-	cout<<count<<"\n";
-	//}
+	cout<<ans<<"\n";
 
 }
