@@ -37,12 +37,12 @@ void dfs_cycledetection(int cur) {
 	// we are at this position when whole
 	// subtree of cur is visited
 	
-	visited[cur] = 2; // leave dfs
+	visited[cur] = 0; // leave dfs
 }
 
 void addedge(int a,int b){
 	gr[a].push_back(b);
-	gr[b].push_back(a);
+	// gr[b].push_back(a);
 }
 
 int main(){
@@ -54,15 +54,14 @@ int main(){
 	    #endif
 
 	addedge(0,1);
-	addedge(1,1);
-	addedge(0,2);
-	addedge(2,4);
-	addedge(1,3);
-	//addedge(3,4);
-	//bfs(0);
-	cout<<endl;
+	addedge(1,2);
+	addedge(2,3);
+	addedge(3,4);
+	addedge(4,5);
+	addedge(0,5);
+	addedge(4,2);
 	dfs_cycledetection(0);
-	cout<<endl;
+	// cout<<endl;
 	cout<<cycle;
 
 }

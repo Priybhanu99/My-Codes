@@ -16,16 +16,24 @@ int32_t main(){
      #endif
 
     int t;
-    //cin>>t; while(t--){
+    cin>>t; while(t--){
 
-    int n;
-    cin>>n;
+        int n;
+        cin>>n;
 
-    int a[n];
-    for(int i=0;i<n;i++){
-        cin>>a[i];
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+        }
+
+        sort(a,a+n);
+        if(n==2){
+            cout<<"0\n";
+        }else{
+
+            int x = min(a[n-1],a[n-2])-1;
+            cout<<min(x,n-2)<<"\n";
+        }
     }
-
-    //}
 
 }
